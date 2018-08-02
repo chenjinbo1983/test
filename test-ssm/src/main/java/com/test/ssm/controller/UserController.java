@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 @Controller
 @RequestMapping("/user")
@@ -25,14 +26,17 @@ public class UserController {
 //        System.out.print("hello2");
 //        model.addAttribute("now", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 //        System.out.println("hello222");
-//        List<Test> tests = testMapper.findAll();
+//        List<test> tests = testMapper.findAll();
 //        model.addAttribute("tests",tests);
 //        List<CbhTransactLog> logs = cbhTransactLogMapper.findAll();
 //        model.addAttribute("logs",logs);
         List<User> users = userDao.selectAllUser();
         model.addAttribute("users",users);
 //        List<User> users = userService.getAll();
+
+
         System.out.println(users.get(0).getId());
         return "hello";
     }
+
 }
