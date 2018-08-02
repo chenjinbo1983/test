@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
 @Controller
 @RequestMapping("/user")
@@ -30,8 +29,9 @@ public class UserController {
 //        model.addAttribute("tests",tests);
 //        List<CbhTransactLog> logs = cbhTransactLogMapper.findAll();
 //        model.addAttribute("logs",logs);
+        UserDao userDao = this.userDao;
         List<User> users = userDao.selectAllUser();
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
 //        List<User> users = userService.getAll();
 
 
