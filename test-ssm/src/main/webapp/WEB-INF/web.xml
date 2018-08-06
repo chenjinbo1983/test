@@ -38,7 +38,15 @@
     <!-- 匹配所有请求，此处也可以配置成 *.do 形式 -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
+  <!-- configure the HiddenHttpMethodFilter,convert the post method to put or delete -->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>

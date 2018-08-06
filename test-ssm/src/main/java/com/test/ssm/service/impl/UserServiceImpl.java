@@ -13,10 +13,6 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserDao userDao;
     public List<User> getAll(){
-//        User user = new User();
-//        user.setId(1L);
-//        ArrayList<User> list = new ArrayList<User>();
-//        list.add(user);
 
         return userDao.selectAllUser();
     }

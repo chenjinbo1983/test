@@ -1,15 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-hello.jsp
-<table align='left' border='1' cellspacing='0'>
-    <tr>
-        <td>id</td>
-        <td>userName</td>
-    </tr>
-    <c:forEach items="${users}" var="s" varStatus="st">
-        <tr>
-            <td>${s.id}</td>
-            <td>${s.userName}</td>
-        </tr>
-    </c:forEach>
-</table>
+<html>
+<body>
+<h2>Hello World!</h2>
+<form action="/rest/user/1" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="put">
+</form>
+
+<form action="/rest/user/1" method="post">
+    <input type="submit" value="post">
+</form>
+
+<form action="/rest/user/1" method="get">
+    <input type="submit" value="get">
+</form>
+
+<form action="/rest/user/1" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+</form>
+</body>
+</html>

@@ -20,6 +20,7 @@
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html;charset=UTF-8</value>
+                <value>text/plain;charset=UTF-8</value>
             </list>
         </property>
     </bean>
@@ -31,7 +32,14 @@
             </list>
         </property>
     </bean>
-
+    <!--解决json乱码 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
