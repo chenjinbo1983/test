@@ -1,6 +1,7 @@
 package com.test.ssm.controller;
 
 
+import com.test.ssm.dao.MonitorTaskConfig2Dao;
 import com.test.ssm.dao.MonitorTaskConfigDao;
 import com.test.ssm.model.MonitorTaskConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class MonitorTaskConfigController {
     @Autowired
     MonitorTaskConfigDao monitorTaskConfigDao;
 
+    @Autowired
+    MonitorTaskConfig2Dao monitorTaskConfig2Dao;
 
     @ResponseBody
     @RequestMapping("/getAll")
@@ -35,5 +38,10 @@ public class MonitorTaskConfigController {
         return monitorTaskConfigs;
     }
 
-
+    @ResponseBody
+    @RequestMapping("/getAll2")
+    public List<MonitorTaskConfig> getAll2() {//自动匹配参数
+        List<MonitorTaskConfig> monitorTaskConfigs = monitorTaskConfig2Dao.getAll();
+        return monitorTaskConfigs;
+    }
 }

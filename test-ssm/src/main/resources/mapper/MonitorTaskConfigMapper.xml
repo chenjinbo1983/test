@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.ssm.dao.MonitorTaskConfig2Dao">
+
+    <!-- 多对一 -->
+    <resultMap id="MonitorTaskConfigMap" type="com.test.ssm.model.MonitorTaskConfig">
+        <result property="id" column="id" />
+        <result property="configName" column="config_name" />
+        <result property="configValue" column="config_value" />
+        <result property="configUnit" column="config_unit" />
+        <result property="configComment" column="config_commnet" />
+        <collection property="monitorTask" ofType="com.test.ssm.model.MonitorTask" column="monitor_task_id">
+            <id property="id" column="monitor_task_id"></id>
+            <result property="name" column="name" />
+        </collection>
+    </resultMap>
+
+
+
+
+    <select id="getAll" resultMap="MonitorTaskConfigMap">
+        select mtc.*,mt.* from monitor_task_config mtc,monitor_task mt where mtc.monitor_task_id = mt.id
+    </select>
+
+
+
+</mapper>

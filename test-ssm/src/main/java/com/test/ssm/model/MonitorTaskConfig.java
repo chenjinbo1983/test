@@ -8,7 +8,7 @@ public class MonitorTaskConfig {
     private String configValue;
     private String configUnit;
     private String configComment;
-    private List<MonitorTask> monitorTaskList;
+    private MonitorTask monitorTask;
 
     public int getId() {
         return id;
@@ -50,11 +50,11 @@ public class MonitorTaskConfig {
         this.configComment = configComment;
     }
 
-    public List<MonitorTask> getMonitorTaskList() {
-        return monitorTaskList;
+    public MonitorTask getMonitorTask() {
+        return monitorTask;
     }
 
-    public void setMonitorTaskList(List<MonitorTask> monitorTaskList) {
-        this.monitorTaskList = monitorTaskList;
+    public void setMonitorTask(MonitorTask monitorTask) {
+        this.monitorTask = monitorTask;
     }
 }

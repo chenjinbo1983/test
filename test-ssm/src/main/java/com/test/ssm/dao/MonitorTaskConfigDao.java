@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 接口形式的dao，sql写在注解中
+ */
 @Repository
 public interface MonitorTaskConfigDao {
 
