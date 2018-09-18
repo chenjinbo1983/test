@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.ssm.dao.User2Dao">
+
+    <parameterMap type="com.test.ssm.model.User2" id="parameterUserMap">
+        <parameter property="id"/>
+        <parameter property="username"/>
+        <parameter property="mobile"/>
+    </parameterMap>
+
+    <insert id="insertUser" parameterMap="parameterUserMap">
+        INSERT INTO user(username,mobile)
+        VALUES(#{username},#{mobile});
+    </insert>
+
+    <resultMap type="com.test.ssm.model.User2" id="resultUser">
+        <result property="id" column="group_id"/>
+        <result property="name" column="name"/>
+        <collection property="groups" column="id" select="com.test.ssm.dao.User2GroupDao.getGroupsByUserId"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="resultUser" parameterType="int">
+        SELECT *
+        FROM user2
+        WHERE id=#{userId}
+    </select>
+
+    <select id="getUserByName" resultMap="resultUser" parameterType="String">
+  <!--普通查询
+        SELECT *
+        FROM user2
+        WHERE username=#{name}
+        -->
+
+        <!--模糊查询,使用${}，原样输出，而使用#{}，就会多出单引号''-->
+      SELECT *
+      FROM user2
+      WHERE username like '%${name}%'
+
+    </select>
+</mapper>

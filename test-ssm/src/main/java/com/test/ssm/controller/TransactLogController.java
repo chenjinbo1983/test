@@ -15,6 +15,7 @@ import javax.ws.rs.POST;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -41,6 +42,13 @@ public class TransactLogController {
         System.out.println(id);
         CbhTransactLog cbhTransactLog = cbhTransactLog2Dao.getById(id);
         return cbhTransactLog;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/transactLog2",method=RequestMethod.GET)
+    public List<CbhTransactLog> getTransactLogList(int begin, int end) {
+
+        return cbhTransactLog2Dao.selectAll(begin,end);
     }
 
     @ResponseBody

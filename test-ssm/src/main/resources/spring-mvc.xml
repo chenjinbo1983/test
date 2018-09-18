@@ -10,6 +10,7 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <context:annotation-config />
+
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="com.test.ssm"/>
 
@@ -33,12 +34,13 @@
         </property>
     </bean>
     <!--解决json乱码 -->
-    <mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService">
         <mvc:message-converters register-defaults="true">
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
             </bean>
         </mvc:message-converters>
+
     </mvc:annotation-driven>
 
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
@@ -56,4 +58,14 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="4096"/>
     </bean>
+
+    <!--- 自定义转换器 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.test.ssm.converter.DateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
 </beans>

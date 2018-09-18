@@ -12,7 +12,7 @@
 
 
     <select id="selectAll" resultMap="CbhTransactLogMap">
-        SELECT * FROM cbh_transact_log
+        SELECT * FROM cbh_transact_log limit #{begin },#{end }
     </select>
     
     <insert id="insert" parameterType="com.test.ssm.model.CbhTransactLog" useGeneratedKeys="true" keyProperty="id">

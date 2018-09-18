@@ -16,7 +16,7 @@ public interface CbhTransactLog2Dao {
 
     CbhTransactLog getById(@Param("id") int id);
 
-    List<CbhTransactLog> selectAll();
+    List<CbhTransactLog> selectAll(@Param("begin")int begin,@Param("end")int end);
 
 
     int insert(CbhTransactLog log);

@@ -3,6 +3,7 @@ package com.test.ssm.controller;
 
 import com.test.ssm.dao.UserDao;
 import com.test.ssm.model.User;
+import com.test.ssm.service.IUserService;
 import com.test.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    IUserService iUserService;
 
     @RequestMapping("/hello")
     public String hello(Model model) {
@@ -64,5 +68,24 @@ public class UserController {
     public String update(User user) {
         System.out.println(user.getId()+"  "+user.getUserName());
         return "hello";
+    }
+
+    // 返回json数据
+    @ResponseBody
+    @RequestMapping("/getAllUser")
+    public List<User> getAllUser() {
+        List<User> users = iUserService.getAllUser();
+        System.out.println("test");
+//        System.out.println(users.get(0).getId());
+
+        /*
+        spring-mvc.xml，有如下配置
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/WEB-INF/views/" />
+            <property name="suffix" value=".jsp"/>
+        </bean>
+         所以转向/WEB-INF/views/user.jsp
+         */
+        return users;
     }
 }
