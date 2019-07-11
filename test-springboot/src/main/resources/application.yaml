@@ -1,0 +1,37 @@
+server:
+  port: 9090
+#actutor配置
+info:
+  head: head
+  body: body
+management:
+  endpoints:
+    web:
+      exposure:
+        #加载所有的端点，默认只加载了info、health
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    #可以关闭指定的端点
+    shutdown:
+      enabled: false
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?zeroDateTimeBehavior=convertToNull&amp;connectTimeout=10000&amp;socketTimeout=10000
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-idle: 1000
+      min-idle: 10
+      max-wait-millis: 120000
+      initial-size: 10
+      validation-query: select 1 from dual
+      test-while-idle: true
+      time-between-eviction-runs-millis: 3600000
